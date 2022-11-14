@@ -1,5 +1,6 @@
 package com.imc.dscatalog.resources;
 
+import com.imc.dscatalog.dto.CategoryDTO;
 import com.imc.dscatalog.entities.Category;
 import com.imc.dscatalog.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class CategoryResource {
     private CategoryService categoryService;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll(){
+    public ResponseEntity<List<CategoryDTO>> findAll(){
 
-        List<Category> categories = categoryService.findAll();
+        List<CategoryDTO> categories = categoryService.findAll();
         /*
             Para instanciar o método ResponseEntity, usamos alguns
             métodos builder dele:
