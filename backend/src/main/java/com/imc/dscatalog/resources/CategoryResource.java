@@ -1,6 +1,8 @@
 package com.imc.dscatalog.resources;
 
 import com.imc.dscatalog.entities.Category;
+import com.imc.dscatalog.services.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +15,13 @@ import java.util.List;
 @RequestMapping(value = "categories")
 public class CategoryResource {
 
+    @Autowired
+    private CategoryService categoryService;
+
     @GetMapping
     public ResponseEntity<List<Category>> findAll(){
-        List<Category> categories = new ArrayList<>();
-        categories.add(new Category(2L, "Books"));
-        categories.add(new Category(6L, "Notebooks"));
+
+        List<Category> categories = categoryService.findAll();
         /*
             Para instanciar o método ResponseEntity, usamos alguns
             métodos builder dele:
